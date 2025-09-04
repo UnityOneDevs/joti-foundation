@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function PrivacyPolicy() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Privacy Policy'
+      description='Joti Foundation Privacy Policy - Learn how we collect, use, and protect your personal information.'
+    >
       <Head>
         <title>Joti Foundation | Privacy Policy</title>
         <meta
@@ -633,6 +637,6 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

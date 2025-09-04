@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function Volunteer() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Volunteer'
+      description='Join Joti Foundation as a volunteer and make a difference in communities. Apply now to be part of our mission.'
+    >
       <Head>
         <title>Joti Foundation | Volunteer</title>
         <meta
@@ -122,6 +126,6 @@ export default function Volunteer() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

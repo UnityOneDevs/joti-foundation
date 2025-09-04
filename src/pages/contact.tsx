@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function Contact() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Contact Us'
+      description='Get in touch with Joti Foundation. Contact us for inquiries, partnerships, or to learn more about our initiatives.'
+    >
       <Head>
         <title>Joti Foundation | Contact Us</title>
         <meta
@@ -157,6 +161,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

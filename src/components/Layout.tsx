@@ -31,11 +31,193 @@ export default function Layout({
         />
         <link rel='icon' href='/images/favicon.png' type='image/x-icon' />
 
-        {/* Font Awesome */}
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'
-        />
+        {/* Custom CSS to ensure navigation is always visible */}
+        <style jsx global>{`
+          /* Force navigation to be visible on all screens */
+          .main-header .nav-outer .main-menu,
+          .sticky-header .main-menu {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+
+          .nav-outer .mobile-nav-toggler {
+            display: none !important;
+          }
+
+          /* Hide sticky header by default - only show when scrolling */
+          .sticky-header {
+            display: none !important;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          }
+
+          /* Show sticky header only when scrolled */
+          .sticky-header.fixed-header {
+            display: block !important;
+          }
+
+          .main-menu .navigation {
+            display: flex !important;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+          }
+
+          .main-menu .navigation > li {
+            margin: 5px 10px;
+            position: relative;
+          }
+
+          .main-menu .navigation > li > a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+          }
+
+          .main-menu .navigation > li > a:hover {
+            color: #007bff;
+          }
+
+          .main-menu .navigation > li.dropdown > ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            z-index: 1000;
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border-radius: 4px;
+          }
+
+          .main-menu .navigation > li.dropdown:hover > ul {
+            display: block;
+          }
+
+          .main-menu .navigation > li.dropdown > ul > li > a {
+            padding: 12px 15px;
+            display: block;
+            font-size: 13px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+          }
+
+          .main-menu .navigation > li.dropdown > ul > li > a:hover {
+            background: #f8f9fa;
+            color: #007bff;
+          }
+
+          .theme-btn {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+          }
+
+          .theme-btn:hover {
+            background: #0056b3;
+            color: white;
+          }
+
+          /* Mobile responsive */
+          @media only screen and (max-width: 768px) {
+            .main-menu .navigation {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 0;
+            }
+
+            .main-menu .navigation > li {
+              margin: 0;
+              width: 100%;
+              border-bottom: 1px solid #eee;
+            }
+
+            .main-menu .navigation > li > a {
+              padding: 15px 20px;
+              border-bottom: none;
+            }
+
+            .main-menu .navigation > li.dropdown > ul {
+              position: static;
+              box-shadow: none;
+              background: #f8f9fa;
+              margin-left: 20px;
+              display: none;
+            }
+
+            .main-menu .navigation > li.dropdown:hover > ul {
+              display: block;
+            }
+
+            .main-menu .navigation > li.dropdown > ul > li > a {
+              padding: 10px 20px;
+            }
+
+            .donate-link {
+              width: 100%;
+              text-align: center;
+              margin-top: 10px;
+            }
+
+            .theme-btn {
+              width: 100%;
+              text-align: center;
+              margin: 5px 0;
+            }
+          }
+
+          /* Ensure header layout works */
+          .header-upper .inner-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+          }
+
+          .logo-box {
+            flex-shrink: 0;
+          }
+
+          .nav-outer {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+          }
+
+          @media only screen and (max-width: 768px) {
+            .header-upper .inner-container {
+              flex-direction: column;
+              align-items: stretch;
+            }
+
+            .nav-outer {
+              justify-content: center;
+              margin-top: 15px;
+            }
+          }
+        `}</style>
       </Head>
 
       <div className='page-wrapper'>
@@ -60,69 +242,90 @@ export default function Layout({
                 </div>
                 {/* Nav Box */}
                 <div className='nav-outer clearfix'>
-                  {/* Mobile Navigation Toggler */}
-                  <div className='mobile-nav-toggler'>
-                    <span className='icon flaticon-menu-1'></span>
-                  </div>
                   {/* Main Menu */}
                   <nav className='main-menu navbar-expand-md navbar-light'>
-                    <div
-                      className='collapse navbar-collapse show clearfix'
-                      id='navbarSupportedContent'
-                    >
-                      <ul className='navigation clearfix'>
-                        <li>
-                          <Link href='/'>Home</Link>
-                        </li>
-                        <li className='dropdown'>
-                          <a href='#'>About us</a>
-                          <ul>
-                            <li>
-                              <Link href='/about'>Governor Body</Link>
-                            </li>
-                            <li>
-                              <Link href='/annual-reports'>Annual Reports</Link>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <Link href='/our-causes'>Our Causes</Link>
-                        </li>
-                        <li>
-                          <Link href='/gallery'>Gallery</Link>
-                        </li>
-                        <li>
-                          <Link href='/news-media'>News & Media</Link>
-                        </li>
-                        <li>
-                          <Link href='/contact'>Contact Us</Link>
-                        </li>
-                        <li className='donate-link'>
-                          <Link
-                            href='/partner'
-                            className='theme-btn btn-style-one'
-                          >
-                            <span className='btn-title'>Partner</span>
-                          </Link>
-                        </li>
-                        <li className='donate-link'>
-                          <Link
-                            href='/volunteer'
-                            className='theme-btn btn-style-one'
-                          >
-                            <span className='btn-title'>Volunteer</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <a
-                            href='https://pages.razorpay.com/pl_Nw26gwxdMsIh53/view'
-                            className='theme-btn btn-style-one'
-                          >
-                            <span className='btn-title'>Donate</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+                    <ul className='navigation clearfix'>
+                      <li>
+                        <Link href='/'>Home</Link>
+                      </li>
+                      <li className='dropdown'>
+                        <a href='#'>About us</a>
+                        <ul>
+                          <li>
+                            <Link href='/about'>Governor Body</Link>
+                          </li>
+                          <li>
+                            <Link href='/annual-reports'>Annual Reports</Link>
+                          </li>
+                        </ul>
+                      </li>
+                      <li className='dropdown'>
+                        <a href='#'>Our Causes</a>
+                        <ul>
+                          <li>
+                            <Link href='/jal-jeevan'>Jal Jeevan</Link>
+                          </li>
+                          <li>
+                            <Link href='/clearer-vision'>
+                              Clearer Vision for Brighter Future
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href='/disaster-relief'>Disaster Relief</Link>
+                          </li>
+                          <li>
+                            <Link href='/samarth'>Samarth</Link>
+                          </li>
+                          <li>
+                            <Link href='/distribution-drive'>
+                              Distribution Drive
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href='/empower-ed'>Empower-ED</Link>
+                          </li>
+                          <li>
+                            <Link href='/health-camps'>Health Camps</Link>
+                          </li>
+                          <li>
+                            <Link href='/education'>Education</Link>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <Link href='/gallery'>Gallery</Link>
+                      </li>
+                      <li>
+                        <Link href='/news-media'>News & Media</Link>
+                      </li>
+                      <li>
+                        <Link href='/contact'>Contact Us</Link>
+                      </li>
+                      <li className='donate-link'>
+                        <Link
+                          href='/partner'
+                          className='theme-btn btn-style-one'
+                        >
+                          <span className='btn-title'>Partner</span>
+                        </Link>
+                      </li>
+                      <li className='donate-link'>
+                        <Link
+                          href='/volunteer'
+                          className='theme-btn btn-style-one'
+                        >
+                          <span className='btn-title'>Volunteer</span>
+                        </Link>
+                      </li>
+                      <li>
+                        <a
+                          href='https://pages.razorpay.com/pl_Nw26gwxdMsIh53/view'
+                          className='theme-btn btn-style-one'
+                        >
+                          <span className='btn-title'>Donate</span>
+                        </a>
+                      </li>
+                    </ul>
                   </nav>
                 </div>
               </div>
@@ -149,7 +352,87 @@ export default function Layout({
               {/* Right Col */}
               <div className='pull-right'>
                 {/* Main Menu */}
-                <nav className='main-menu clearfix'></nav>
+                <nav className='main-menu clearfix'>
+                  <ul className='navigation clearfix'>
+                    <li>
+                      <Link href='/'>Home</Link>
+                    </li>
+                    <li className='dropdown'>
+                      <a href='#'>About us</a>
+                      <ul>
+                        <li>
+                          <Link href='/about'>Governor Body</Link>
+                        </li>
+                        <li>
+                          <Link href='/annual-reports'>Annual Reports</Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li className='dropdown'>
+                      <a href='#'>Our Causes</a>
+                      <ul>
+                        <li>
+                          <Link href='/jal-jeevan'>Jal Jeevan</Link>
+                        </li>
+                        <li>
+                          <Link href='/clearer-vision'>
+                            Clearer Vision for Brighter Future
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href='/disaster-relief'>Disaster Relief</Link>
+                        </li>
+                        <li>
+                          <Link href='/samarth'>Samarth</Link>
+                        </li>
+                        <li>
+                          <Link href='/distribution-drive'>
+                            Distribution Drive
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href='/empower-ed'>Empower-ED</Link>
+                        </li>
+                        <li>
+                          <Link href='/health-camps'>Health Camps</Link>
+                        </li>
+                        <li>
+                          <Link href='/education'>Education</Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <Link href='/gallery'>Gallery</Link>
+                    </li>
+                    <li>
+                      <Link href='/news-media'>News & Media</Link>
+                    </li>
+                    <li>
+                      <Link href='/contact'>Contact Us</Link>
+                    </li>
+                    <li className='donate-link'>
+                      <Link href='/partner' className='theme-btn btn-style-one'>
+                        <span className='btn-title'>Partner</span>
+                      </Link>
+                    </li>
+                    <li className='donate-link'>
+                      <Link
+                        href='/volunteer'
+                        className='theme-btn btn-style-one'
+                      >
+                        <span className='btn-title'>Volunteer</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <a
+                        href='https://pages.razorpay.com/pl_Nw26gwxdMsIh53/view'
+                        className='theme-btn btn-style-one'
+                      >
+                        <span className='btn-title'>Donate</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>
@@ -359,7 +642,7 @@ export default function Layout({
       <Script
         id='jquery-script'
         src='/js/jquery.js'
-        strategy='beforeInteractive'
+        strategy='afterInteractive'
         onLoad={() => {
           // Load other scripts only after jQuery is ready
           const script = document.createElement('script')
@@ -418,6 +701,31 @@ export default function Layout({
                                 document.createElement('script')
                               mainScript.src = '/js/script.js'
                               document.head.appendChild(mainScript)
+
+                              // Add sticky header functionality
+                              mainScript.onload = () => {
+                                // Sticky header functionality
+                                const stickyHeader =
+                                  document.querySelector('.sticky-header')
+                                const headerUpper =
+                                  document.querySelector('.header-upper')
+
+                                if (stickyHeader && headerUpper) {
+                                  const headerHeight = (
+                                    headerUpper as HTMLElement
+                                  ).offsetHeight
+
+                                  window.addEventListener('scroll', () => {
+                                    if (window.pageYOffset > headerHeight) {
+                                      stickyHeader.classList.add('fixed-header')
+                                    } else {
+                                      stickyHeader.classList.remove(
+                                        'fixed-header'
+                                      )
+                                    }
+                                  })
+                                }
+                              }
                             }
                           }
                         }

@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function DistributionDrive() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Distribution Drive'
+      description="Distribution Drive - Joti Foundation's initiative to redistribute happiness and spread smiles by providing fresh clothes to villages across Punjab."
+    >
       <Head>
         <title>Joti Foundation | Distribution Drive</title>
         <meta
@@ -129,6 +133,6 @@ export default function DistributionDrive() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

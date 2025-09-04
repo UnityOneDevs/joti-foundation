@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Layout from '../components/Layout'
 
 export default function ThankYou() {
   return (
-    <>
+    <Layout
+      title='Thank You for Your Inquiry - Joti Foundation'
+      description='Thank you for reaching out to Joti Foundation. We appreciate your inquiry and will respond shortly.'
+    >
       <Head>
         <title>Thank You for Your Inquiry - Joti Foundation</title>
         <meta
@@ -93,6 +97,6 @@ export default function ThankYou() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

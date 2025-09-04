@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function TermsAndConditions() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Terms and Conditions'
+      description='Joti Foundation Terms and Conditions - Read our terms of use and service agreement.'
+    >
       <Head>
         <title>Joti Foundation | Terms and Conditions</title>
         <meta
@@ -288,6 +292,6 @@ export default function TermsAndConditions() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

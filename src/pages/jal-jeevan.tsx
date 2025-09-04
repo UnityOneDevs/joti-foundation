@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function JalJeevan() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Jal Jeevan'
+      description="Jal Jeevan initiative by Joti Foundation - providing clean water to villages in Punjab's Malwa region to combat waterborne diseases."
+    >
       <Head>
         <title>Joti Foundation | Jal Jeevan</title>
         <meta
@@ -39,14 +43,14 @@ export default function JalJeevan() {
                       <h2>Jal Jeevan</h2>
 
                       <p>
-                        In the heart of Punjab's Malwa region lies a silent
+                        In the heart of Punjab&apos;s Malwa region lies a silent
                         threat: the looming specter of waterborne diseases and
                         cancer caused by the presence of heavy metals such as
                         fluoride, lead, arsenic, and uranium in the water
                         supply. Recognizing the urgent need to address this
-                        crisis, Joti Foundation has launched "Jal Jeevan," a
-                        pioneering initiative aimed at providing pristine water
-                        to the villages of Punjab.
+                        crisis, Joti Foundation has launched &quot;Jal
+                        Jeevan,&quot; a pioneering initiative aimed at providing
+                        pristine water to the villages of Punjab.
                       </p>
 
                       <p>
@@ -127,6 +131,6 @@ export default function JalJeevan() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

@@ -1,10 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function Donate() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Donate'
+      description="Support Joti Foundation's mission by making a donation. Every contribution helps us make a difference in communities."
+    >
       <Head>
         <title>Joti Foundation | Donate</title>
         <meta
@@ -128,6 +132,6 @@ export default function Donate() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

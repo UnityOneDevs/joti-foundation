@@ -1,4 +1,5 @@
 import Layout from '../components/Layout'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -45,13 +46,13 @@ export default function Home() {
                     better way. This would further our understanding of their
                     needs- emotionally, mentally, physically and
                     psychologically. We are here to reform the system, spark our
-                    country's future and make a difference in the lives of
+                    country&apos;s future and make a difference in the lives of
                     others!
                   </div>
                   <div className='donate-link'>
-                    <a href='/about' className='theme-btn btn-style-one'>
+                    <Link href='/about' className='theme-btn btn-style-one'>
                       <span className='btn-title'>Read More</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -87,18 +88,18 @@ export default function Home() {
               >
                 <div className='image-box'>
                   <figure className='image'>
-                    <a href='/jal-jeevan'>
+                    <Link href='/jal-jeevan'>
                       <img
                         className='lazy-image'
                         src='/images/thumbnail/jal-jeevan-thumbnail.jpg'
                         alt='Jal Jeevan'
                       />
-                    </a>
+                    </Link>
                   </figure>
                 </div>
                 <div className='lower-content'>
                   <h3>
-                    <a href='/jal-jeevan'>Jal Jeevan</a>
+                    <Link href='/jal-jeevan'>Jal Jeevan</Link>
                   </h3>
                   <div className='text'>
                     Malwa region of Punjab is popularly known as the cancer belt
@@ -116,20 +117,20 @@ export default function Home() {
               >
                 <div className='image-box'>
                   <figure className='image'>
-                    <a href='/clearer-vision'>
+                    <Link href='/clearer-vision'>
                       <img
                         className='lazy-image'
                         src='/images/thumbnail/clear-visionthumbnailr.JPG'
                         alt='Clear Vision for Brighter Future'
                       />
-                    </a>
+                    </Link>
                   </figure>
                 </div>
                 <div className='lower-content'>
                   <h3>
-                    <a href='/clearer-vision'>
+                    <Link href='/clearer-vision'>
                       Clear Vision for Brighter Future
-                    </a>
+                    </Link>
                   </h3>
                   <div className='text'>
                     We realize the impact low vision has on the learning
@@ -148,18 +149,18 @@ export default function Home() {
               >
                 <div className='image-box'>
                   <figure className='image'>
-                    <a href='/disaster-relief'>
+                    <Link href='/disaster-relief'>
                       <img
                         className='lazy-image'
                         src='/images/thumbnail/disaster-relief-thumbnail.JPG'
                         alt='Disaster Relief'
                       />
-                    </a>
+                    </Link>
                   </figure>
                 </div>
                 <div className='lower-content'>
                   <h3>
-                    <a href='/disaster-relief'>Disaster Relief</a>
+                    <Link href='/disaster-relief'>Disaster Relief</Link>
                   </h3>
                   <div className='text'>
                     In times of natural or man-made disasters, the importance of
@@ -171,9 +172,9 @@ export default function Home() {
           </div>
           <center>
             <div className='donate-link'>
-              <a href='/our-causes' className='theme-btn btn-style-one'>
+              <Link href='/our-causes' className='theme-btn btn-style-one'>
                 <span className='btn-title'>Read More</span>
-              </a>
+              </Link>
             </div>
           </center>
         </div>
@@ -208,15 +209,17 @@ export default function Home() {
                 education and emergency care.
               </div>
               <div className='link-box clearfix'>
-                <a href='/partner' className='theme-btn btn-style-three'>
+                <Link href='/partner' className='theme-btn btn-style-three'>
                   <span className='btn-title'>Partner</span>
-                </a>
-                <a href='/volunteer' className='theme-btn btn-style-three'>
+                </Link>
+                <Link href='/volunteer' className='theme-btn btn-style-three'>
                   <span className='btn-title'>Volunteer</span>
-                </a>
+                </Link>
                 <a
                   href='https://pages.razorpay.com/pl_Nw26gwxdMsIh53/view'
                   className='theme-btn btn-style-three'
+                  target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <span className='btn-title'>Donate</span>
                 </a>
@@ -385,9 +388,9 @@ export default function Home() {
 
             <center>
               <div className='donate-link'>
-                <a href='/gallery' className='theme-btn btn-style-one'>
+                <Link href='/gallery' className='theme-btn btn-style-one'>
                   <span className='btn-title'>Gallery More</span>
-                </a>
+                </Link>
               </div>
             </center>
           </div>
@@ -402,7 +405,7 @@ export default function Home() {
               <div className='sec-title centered'>
                 <center>
                   <h2>
-                    What's <span className='font-s'>New</span>
+                    What&apos;s <span className='font-s'>New</span>
                   </h2>
                 </center>
               </div>

@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function EmpowerEd() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Empower-ED'
+      description="Empower-ED - Joti Foundation's flagship education initiative to provide quality education and support to underprivileged children."
+    >
       <Head>
         <title>Joti Foundation | Empower-ED</title>
         <meta
@@ -120,6 +124,6 @@ export default function EmpowerEd() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

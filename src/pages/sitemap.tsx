@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function Sitemap() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Sitemap'
+      description='Joti Foundation Sitemap - Find all pages and sections of our website.'
+    >
       <Head>
         <title>Joti Foundation | Sitemap</title>
         <meta
@@ -137,6 +141,6 @@ export default function Sitemap() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function NewsMedia() {
   // News data
@@ -89,7 +90,10 @@ export default function NewsMedia() {
   ]
 
   return (
-    <>
+    <Layout
+      title='Joti Foundation | News And Media'
+      description="Stay updated with the latest news and media coverage about Joti Foundation's initiatives and impact in communities."
+    >
       <Head>
         <title>Joti Foundation | News And Media</title>
         <meta
@@ -175,6 +179,6 @@ export default function NewsMedia() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

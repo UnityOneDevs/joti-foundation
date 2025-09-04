@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function DisasterRelief() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Disaster Relief'
+      description="Joti Foundation's disaster relief program provides immediate aid and support to communities affected by natural or man-made disasters."
+    >
       <Head>
         <title>Joti Foundation | Disaster Relief</title>
         <meta
@@ -118,6 +122,6 @@ export default function DisasterRelief() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

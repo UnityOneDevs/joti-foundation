@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function Education() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Education'
+      description="Education initiatives by Joti Foundation - Clear Vision for Brighter Future and EmpowerED programs to support children's education and development."
+    >
       <Head>
         <title>Joti Foundation | Education</title>
         <meta
@@ -118,6 +122,6 @@ export default function Education() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

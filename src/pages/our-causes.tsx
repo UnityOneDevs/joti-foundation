@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function OurCauses() {
   // Causes data
@@ -64,7 +65,10 @@ export default function OurCauses() {
   ]
 
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Our Causes'
+      description="Explore Joti Foundation's various causes and initiatives aimed at making a positive impact in communities."
+    >
       <Head>
         <title>Joti Foundation | Our Causes</title>
         <meta
@@ -141,6 +145,6 @@ export default function OurCauses() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

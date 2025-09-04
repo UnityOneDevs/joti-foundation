@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function Samarth() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Samarth'
+      description="Samarth - Joti Foundation's initiative to empower differently abled individuals through education and support programs."
+    >
       <Head>
         <title>Joti Foundation | Samarth</title>
         <meta
@@ -61,9 +65,10 @@ export default function Samarth() {
 
                       <p>
                         Joti Foundation under the aegis of its project titled
-                        'EmpowerED' is committed to providing the best solutions
-                        and aid to every child in the realm of education which
-                        will act as a bridge between their dreams and reality.
+                        &apos;EmpowerED&apos; is committed to providing the best
+                        solutions and aid to every child in the realm of
+                        education which will act as a bridge between their
+                        dreams and reality.
                       </p>
                     </div>
                     <div className='link-box'>
@@ -118,6 +123,6 @@ export default function Samarth() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

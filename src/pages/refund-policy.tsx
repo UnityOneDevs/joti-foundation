@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function RefundPolicy() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Refund Policy'
+      description='Joti Foundation Refund Policy - Learn about our donation refund process and terms.'
+    >
       <Head>
         <title>Joti Foundation | Refund Policy</title>
         <meta
@@ -101,6 +105,6 @@ export default function RefundPolicy() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

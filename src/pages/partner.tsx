@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function Partner() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Partner'
+      description='Partner with Joti Foundation to make a difference in communities. Join us in our mission to create positive change.'
+    >
       <Head>
         <title>Joti Foundation | Partner</title>
         <meta
@@ -134,6 +138,6 @@ export default function Partner() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

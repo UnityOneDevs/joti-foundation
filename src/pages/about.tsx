@@ -1,10 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function About() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | About us'
+      description='Joti Foundation - Fighting for the abolition of poverty, gender inequality and a more sustainable future. Join us in making a difference.'
+    >
       <Head>
         <title>Joti Foundation | About us</title>
         <meta
@@ -277,6 +281,6 @@ export default function About() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }

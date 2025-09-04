@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function ClearerVision() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Clearer Vision for Brighter Future'
+      description="Clearer Vision for Brighter Future - Joti Foundation's initiative to provide free eye care and spectacles to underprivileged children in Punjab."
+    >
       <Head>
         <title>Joti Foundation | Clearer Vision for Brighter Future</title>
         <meta
@@ -135,6 +139,6 @@ export default function ClearerVision() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }

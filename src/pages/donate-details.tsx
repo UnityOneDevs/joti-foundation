@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function DonateDetails() {
   return (
-    <>
+    <Layout
+      title='Joti Foundation | Donate'
+      description='Complete your donation to Joti Foundation. Fill in your details and choose your preferred payment method.'
+    >
       <Head>
         <title>Joti Foundation | Donate</title>
         <meta
@@ -249,6 +253,6 @@ export default function DonateDetails() {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }
