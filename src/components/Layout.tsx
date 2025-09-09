@@ -1081,70 +1081,78 @@ export default function Layout({
               document.head.appendChild(uiScript)
 
               uiScript.onload = () => {
-                const fancyboxScript = document.createElement('script')
-                fancyboxScript.src = '/js/jquery.fancybox.js'
-                document.head.appendChild(fancyboxScript)
+                const validateScript = document.createElement('script')
+                validateScript.src = '/js/validate.js'
+                document.head.appendChild(validateScript)
 
-                fancyboxScript.onload = () => {
-                  const mixitupScript = document.createElement('script')
-                  mixitupScript.src = '/js/mixitup.js'
-                  document.head.appendChild(mixitupScript)
+                validateScript.onload = () => {
+                  const fancyboxScript = document.createElement('script')
+                  fancyboxScript.src = '/js/jquery.fancybox.js'
+                  document.head.appendChild(fancyboxScript)
 
-                  mixitupScript.onload = () => {
-                    const owlScript = document.createElement('script')
-                    owlScript.src = '/js/owl.js'
-                    document.head.appendChild(owlScript)
+                  fancyboxScript.onload = () => {
+                    const mixitupScript = document.createElement('script')
+                    mixitupScript.src = '/js/mixitup.js'
+                    document.head.appendChild(mixitupScript)
 
-                    owlScript.onload = () => {
-                      const appearScript = document.createElement('script')
-                      appearScript.src = '/js/appear.js'
-                      document.head.appendChild(appearScript)
+                    mixitupScript.onload = () => {
+                      const owlScript = document.createElement('script')
+                      owlScript.src = '/js/owl.js'
+                      document.head.appendChild(owlScript)
 
-                      appearScript.onload = () => {
-                        const wowScript = document.createElement('script')
-                        wowScript.src = '/js/wow.js'
-                        document.head.appendChild(wowScript)
+                      owlScript.onload = () => {
+                        const appearScript = document.createElement('script')
+                        appearScript.src = '/js/appear.js'
+                        document.head.appendChild(appearScript)
 
-                        wowScript.onload = () => {
-                          const lazyloadScript =
-                            document.createElement('script')
-                          lazyloadScript.src = '/js/lazyload.js'
-                          document.head.appendChild(lazyloadScript)
+                        appearScript.onload = () => {
+                          const wowScript = document.createElement('script')
+                          wowScript.src = '/js/wow.js'
+                          document.head.appendChild(wowScript)
 
-                          lazyloadScript.onload = () => {
-                            const scrollbarScript =
+                          wowScript.onload = () => {
+                            const lazyloadScript =
                               document.createElement('script')
-                            scrollbarScript.src = '/js/scrollbar.js'
-                            document.head.appendChild(scrollbarScript)
+                            lazyloadScript.src = '/js/lazyload.js'
+                            document.head.appendChild(lazyloadScript)
 
-                            scrollbarScript.onload = () => {
-                              const mainScript =
+                            lazyloadScript.onload = () => {
+                              const scrollbarScript =
                                 document.createElement('script')
-                              mainScript.src = '/js/script.js'
-                              document.head.appendChild(mainScript)
+                              scrollbarScript.src = '/js/scrollbar.js'
+                              document.head.appendChild(scrollbarScript)
 
-                              // Add sticky header functionality
-                              mainScript.onload = () => {
-                                // Sticky header functionality
-                                const stickyHeader =
-                                  document.querySelector('.sticky-header')
-                                const headerUpper =
-                                  document.querySelector('.header-upper')
+                              scrollbarScript.onload = () => {
+                                const mainScript =
+                                  document.createElement('script')
+                                mainScript.src = '/js/script.js'
+                                document.head.appendChild(mainScript)
 
-                                if (stickyHeader && headerUpper) {
-                                  const headerHeight = (
-                                    headerUpper as HTMLElement
-                                  ).offsetHeight
+                                // Add sticky header functionality
+                                mainScript.onload = () => {
+                                  // Sticky header functionality
+                                  const stickyHeader =
+                                    document.querySelector('.sticky-header')
+                                  const headerUpper =
+                                    document.querySelector('.header-upper')
 
-                                  window.addEventListener('scroll', () => {
-                                    if (window.pageYOffset > headerHeight) {
-                                      stickyHeader.classList.add('fixed-header')
-                                    } else {
-                                      stickyHeader.classList.remove(
-                                        'fixed-header'
-                                      )
-                                    }
-                                  })
+                                  if (stickyHeader && headerUpper) {
+                                    const headerHeight = (
+                                      headerUpper as HTMLElement
+                                    ).offsetHeight
+
+                                    window.addEventListener('scroll', () => {
+                                      if (window.pageYOffset > headerHeight) {
+                                        stickyHeader.classList.add(
+                                          'fixed-header'
+                                        )
+                                      } else {
+                                        stickyHeader.classList.remove(
+                                          'fixed-header'
+                                        )
+                                      }
+                                    })
+                                  }
                                 }
                               }
                             }
