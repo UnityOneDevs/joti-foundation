@@ -58,6 +58,12 @@ export default function Layout({
         />
         <link rel='icon' href='/images/favicon.png' type='image/x-icon' />
 
+        {/* Font Awesome */}
+        <link
+          rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'
+        />
+
         {/* Fixed CSS for proper navigation behavior */}
         <style jsx global>{`
           /* Main header styles */
@@ -124,10 +130,13 @@ export default function Layout({
           .main-header .nav-outer .main-menu {
             position: relative;
             float: left;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
           }
 
           .main-menu .navigation {
-            display: flex;
+            display: flex !important;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -450,11 +459,11 @@ export default function Layout({
             }
 
             .main-header .nav-outer .main-menu {
-              display: none;
+              display: none !important;
             }
 
             .mobile-nav-toggler {
-              display: block;
+              display: block !important;
             }
 
             .sticky-header .main-menu {
@@ -738,7 +747,20 @@ export default function Layout({
                     </Link>
                   </li>
                   <li className='dropdown'>
-                    <a href='#'>About us</a>
+                    <a
+                      href='#'
+                      onClick={(e) => {
+                        e.preventDefault()
+                        const ul = e.currentTarget
+                          .nextElementSibling as HTMLElement
+                        if (ul) {
+                          ul.style.display =
+                            ul.style.display === 'block' ? 'none' : 'block'
+                        }
+                      }}
+                    >
+                      About us
+                    </a>
                     <ul>
                       <li>
                         <Link
@@ -759,7 +781,20 @@ export default function Layout({
                     </ul>
                   </li>
                   <li className='dropdown'>
-                    <a href='#'>Our Causes</a>
+                    <a
+                      href='#'
+                      onClick={(e) => {
+                        e.preventDefault()
+                        const ul = e.currentTarget
+                          .nextElementSibling as HTMLElement
+                        if (ul) {
+                          ul.style.display =
+                            ul.style.display === 'block' ? 'none' : 'block'
+                        }
+                      }}
+                    >
+                      Our Causes
+                    </a>
                     <ul>
                       <li>
                         <Link

@@ -50,7 +50,8 @@ export default function About() {
                   <div className='sec-title'>
                     <h2>
                       <span className='font-s'>
-                        We can't help everyone, but everyone can help someone.
+                        We can&apos;t help everyone, but everyone can help
+                        someone.
                       </span>
                     </h2>
                     <div className='text'>
@@ -68,8 +69,8 @@ export default function About() {
                       people in a better way. This would further our
                       understanding of their needs- emotionally, mentally,
                       physically and psychologically. We are here to reform the
-                      system, spark our country's future and make a difference
-                      in the lives of others!
+                      system, spark our country&apos;s future and make a
+                      difference in the lives of others!
                     </div>
                   </div>
                 </div>
@@ -166,10 +167,11 @@ export default function About() {
                     <b>Chairperson</b>
                     <br />
                     <p>
-                      "Thanks to Mrs. Prabkiran ji, today, I am in Canada
+                      &quot;Thanks to Mrs. Prabkiran ji, today, I am in Canada
                       majoring in Literature. Without her supporting me and my
                       family, we would not have been able to turn our lives
-                      around. We are forever grateful. God bless!" – Muskaan
+                      around. We are forever grateful. God bless!&quot; –
+                      Muskaan
                     </p>
                     <p>
                       During her school days at Convent Of Jesus And Mary
@@ -184,9 +186,9 @@ export default function About() {
                       which solidified her aim to ensure inclusive and equitable
                       quality education for all. Since the past decade, Mrs
                       Prabkiran has been actively funding education and teaching
-                      poor children in Sherewala, her father's hometown. Mrs
-                      Prabkiran is the founding Chairperson of Joti Foundation
-                      that is dedicated to Promote Lifelong Learning
+                      poor children in Sherewala, her father&apos;s hometown.
+                      Mrs Prabkiran is the founding Chairperson of Joti
+                      Foundation that is dedicated to Promote Lifelong Learning
                       Opportunities for underprivileged children across India.
                     </p>
                   </div>
@@ -223,13 +225,13 @@ export default function About() {
                       grass root level. From identifying families and children
                       in need, Mrs. Sarabjit has been responsible for changing
                       hundreds of lives in Punjab. She lives by making it her
-                      life mission to help provide what's rightful to an
+                      life mission to help provide what&apos;s rightful to an
                       individual – dignity, through all possible means whether
                       that includes giving them food, shelter or financial help.
                     </p>
                     <p>
-                      "Too often, great women go unnoticed and without praise.
-                      We will change that!"
+                      &quot;Too often, great women go unnoticed and without
+                      praise. We will change that!&quot;
                     </p>
                   </div>
                 </div>
@@ -261,9 +263,9 @@ export default function About() {
                     <b>Trustee</b>
                     <p>
                       A successful lawyer by profession, Mr. Ajit, is a Welham
-                      Boy's Alumni who has followed his fathers footsteps in
-                      philanthropy. A social minded and big hearted person, Mr.
-                      Ajit at a young age, has helped many disadvantaged
+                      Boy&apos;s Alumni who has followed his fathers footsteps
+                      in philanthropy. A social minded and big hearted person,
+                      Mr. Ajit at a young age, has helped many disadvantaged
                       families and individuals by providing them correct
                       guidance, jobs and financial aid. His aim is to help raise
                       the living standards of the disadvantaged by providing
