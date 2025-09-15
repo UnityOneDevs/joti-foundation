@@ -1,8 +1,71 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 import Layout from '../components/Layout'
+import Notification from '../components/Notification'
 
 export default function Volunteer() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    qualification: '',
+    address: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [notification, setNotification] = useState<{
+    message: string
+    type: 'success' | 'error'
+  } | null>(null)
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/volunteer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setNotification({ message: data.message, type: 'success' })
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          qualification: '',
+          address: '',
+        })
+      } else {
+        setNotification({ message: data.message, type: 'error' })
+      }
+    } catch {
+      setNotification({
+        message: 'Failed to submit form. Please try again.',
+        type: 'error',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <Layout
       title='Joti Foundation | Volunteer'
@@ -39,7 +102,7 @@ export default function Volunteer() {
       <section className='checkout-page'>
         <div className='auto-container'>
           <div className='checkout-form'>
-            <form method='post' action='/api/volunteer'>
+            <form onSubmit={handleSubmit}>
               <div className='billing-detail'>
                 <div className='row clearfix'>
                   <div className='col-lg-3 col-md-6 col-sm-6'></div>
@@ -51,8 +114,9 @@ export default function Volunteer() {
                         <input
                           type='text'
                           name='name'
-                          value=''
-                          placeholder='Enter First Name'
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          placeholder='Enter Full Name'
                           required
                         />
                       </div>
@@ -63,7 +127,8 @@ export default function Volunteer() {
                         <input
                           type='email'
                           name='email'
-                          value=''
+                          value={formData.email}
+                          onChange={handleInputChange}
                           placeholder='Enter Email Address'
                           required
                         />
@@ -75,7 +140,8 @@ export default function Volunteer() {
                         <input
                           type='tel'
                           name='phone'
-                          value=''
+                          value={formData.phone}
+                          onChange={handleInputChange}
                           placeholder='Enter Contact Number'
                           required
                         />
@@ -89,7 +155,8 @@ export default function Volunteer() {
                         <input
                           type='text'
                           name='qualification'
-                          value=''
+                          value={formData.qualification}
+                          onChange={handleInputChange}
                           placeholder='Enter Educational Qualification'
                           required
                         />
@@ -98,11 +165,12 @@ export default function Volunteer() {
                       {/* Form Group - Address */}
                       <div className='form-group col-lg-12 col-md-6 col-sm-12'>
                         <div className='field-label'>Address</div>
-                        <input
-                          type='text'
+                        <textarea
                           name='address'
-                          value=''
-                          placeholder='Enter Address'
+                          value={formData.address}
+                          onChange={handleInputChange}
+                          placeholder='Enter Complete Address'
+                          rows={3}
                           required
                         />
                       </div>
@@ -113,8 +181,13 @@ export default function Volunteer() {
                           <button
                             type='submit'
                             className='theme-btn btn-style-one place-order'
+                            disabled={isSubmitting}
                           >
-                            <span className='btn-title'>Send Message</span>
+                            <span className='btn-title'>
+                              {isSubmitting
+                                ? 'Submitting...'
+                                : 'Send Application'}
+                            </span>
                           </button>
                         </div>
                       </div>
@@ -126,6 +199,15 @@ export default function Volunteer() {
           </div>
         </div>
       </section>
+
+      {/* Notification */}
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
     </Layout>
   )
 }

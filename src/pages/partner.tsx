@@ -1,8 +1,73 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 import Layout from '../components/Layout'
+import Notification from '../components/Notification'
 
 export default function Partner() {
+  const [formData, setFormData] = useState({
+    name: '',
+    designation: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [notification, setNotification] = useState<{
+    message: string
+    type: 'success' | 'error'
+  } | null>(null)
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/partner', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setNotification({ message: data.message, type: 'success' })
+        // Reset form
+        setFormData({
+          name: '',
+          designation: '',
+          company: '',
+          email: '',
+          phone: '',
+          message: '',
+        })
+      } else {
+        setNotification({ message: data.message, type: 'error' })
+      }
+    } catch {
+      setNotification({
+        message: 'Failed to submit form. Please try again.',
+        type: 'error',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <Layout
       title='Joti Foundation | Partner'
@@ -40,7 +105,7 @@ export default function Partner() {
         <div className='auto-container'>
           {/* Checkout Details */}
           <div className='checkout-form'>
-            <form method='post' action='/api/partner'>
+            <form onSubmit={handleSubmit}>
               <div className='billing-detail'>
                 <div className='row clearfix'>
                   <div className='col-lg-3 col-md-6 col-sm-6'></div>
@@ -52,8 +117,9 @@ export default function Partner() {
                         <input
                           type='text'
                           name='name'
-                          value=''
-                          placeholder='Enter First Name'
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          placeholder='Enter Full Name'
                           required
                         />
                       </div>
@@ -64,7 +130,8 @@ export default function Partner() {
                         <input
                           type='text'
                           name='designation'
-                          value=''
+                          value={formData.designation}
+                          onChange={handleInputChange}
                           placeholder='Enter Designation'
                         />
                       </div>
@@ -75,7 +142,8 @@ export default function Partner() {
                         <input
                           type='text'
                           name='company'
-                          value=''
+                          value={formData.company}
+                          onChange={handleInputChange}
                           placeholder='Enter Company Name'
                         />
                       </div>
@@ -86,7 +154,8 @@ export default function Partner() {
                         <input
                           type='email'
                           name='email'
-                          value=''
+                          value={formData.email}
+                          onChange={handleInputChange}
                           placeholder='Enter Email Address'
                           required
                         />
@@ -98,7 +167,8 @@ export default function Partner() {
                         <input
                           type='tel'
                           name='phone'
-                          value=''
+                          value={formData.phone}
+                          onChange={handleInputChange}
                           placeholder='Enter Mobile Number'
                           required
                         />
@@ -113,7 +183,10 @@ export default function Partner() {
                             </div>
                             <textarea
                               name='message'
-                              placeholder='Notes about your order, e.g. special notes for your delivery.'
+                              value={formData.message}
+                              onChange={handleInputChange}
+                              placeholder='Explain your partnership idea in 100 words or less...'
+                              rows={4}
                             ></textarea>
                           </div>
                         </div>
@@ -125,8 +198,11 @@ export default function Partner() {
                           <button
                             type='submit'
                             className='theme-btn btn-style-one place-order'
+                            disabled={isSubmitting}
                           >
-                            <span className='btn-title'>Send Message</span>
+                            <span className='btn-title'>
+                              {isSubmitting ? 'Sending...' : 'Send Message'}
+                            </span>
                           </button>
                         </div>
                       </div>
@@ -138,6 +214,15 @@ export default function Partner() {
           </div>
         </div>
       </section>
+
+      {/* Notification */}
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
     </Layout>
   )
 }
