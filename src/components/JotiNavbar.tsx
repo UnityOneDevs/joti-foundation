@@ -12,7 +12,8 @@ type Item = Leaf | Node
 /* design tokens */
 const ACCENT = '#e64d43'
 const TEXT = '#0f1d2d'
-const NAV_GAP = 28
+const NAV_GAP = 24
+const CTA_GAP = 12
 const PILL_H = 40
 const PILL_PX = 22
 const UL_W = 52
@@ -69,6 +70,9 @@ export default function JotiNavbar() {
 
   return (
     <>
+      {/* Top Dark Bar */}
+      <div className='h-1 bg-gray-800'></div>
+
       <header className='sticky top-0 z-50 bg-white'>
         <div className='mx-auto max-w-[1200px] px-4 md:px-6'>
           <div className='flex items-center justify-between gap-4 py-2 md:py-3'>
@@ -81,15 +85,18 @@ export default function JotiNavbar() {
               <Image
                 src='/images/logo-new.png'
                 alt='Joti Foundation'
-                width={188}
-                height={46}
+                width={220}
+                height={54}
                 priority
-                className='w-32 h-8 md:w-[188px] md:h-[46px]'
+                className='w-36 h-9 md:w-[220px] md:h-[54px]'
               />
             </Link>
 
             {/* DESKTOP-ONLY WRAPPER (one gate) */}
-            <div className='hidden xl:!flex items-center justify-between gap-1 flex-1'>
+            <div
+              className='hidden xl:!flex items-center justify-between flex-1'
+              style={{ gap: '32px' }}
+            >
               {/* Nav links */}
               <nav>
                 <ul
@@ -121,7 +128,7 @@ export default function JotiNavbar() {
                           style={{
                             color:
                               hoveredDropdown === it.label ? '#e64d43' : TEXT,
-                            padding: '8px 12px',
+                            padding: '8px 4px',
                             borderRadius: '6px',
                           }}
                           aria-current={isActive(it.href) ? 'page' : undefined}
@@ -205,8 +212,12 @@ export default function JotiNavbar() {
                       <li key={it.label}>
                         <Link
                           href={it.href}
-                          className='relative inline-flex items-center gap-1.5 text-[16px] font-semibold leading-none'
-                          style={{ color: TEXT }}
+                          className='relative inline-flex items-center gap-1.5 text-[16px] font-semibold leading-none transition-all duration-200'
+                          style={{
+                            color: TEXT,
+                            padding: '8px 4px',
+                            borderRadius: '6px',
+                          }}
                           aria-current={isActive(it.href) ? 'page' : undefined}
                         >
                           {it.label}
@@ -231,7 +242,7 @@ export default function JotiNavbar() {
               </nav>
 
               {/* CTA pills */}
-              <div className='flex items-center gap-7'>
+              <div className='flex items-center' style={{ gap: CTA_GAP }}>
                 <Link
                   href='/partner'
                   className='inline-flex items-center justify-center rounded-full text-[15px] font-extrabold text-white'
@@ -321,9 +332,9 @@ export default function JotiNavbar() {
             <Image
               src='/images/logo-new.png'
               alt='Joti Foundation'
-              width={180}
-              height={42}
-              className='w-28 h-7 md:w-[180px] md:h-[42px]'
+              width={200}
+              height={48}
+              className='w-32 h-8 md:w-[200px] md:h-[48px]'
             />
           </Link>
           <button
