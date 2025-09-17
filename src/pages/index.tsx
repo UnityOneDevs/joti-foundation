@@ -43,9 +43,7 @@ function FloodResponseBanner() {
         <div className='banner-content'>
           <div className='container'>
             <div className='content-wrapper'>
-              <h1 className='banner-title'>
-                Jammu & Kashmir and Punjab Flood Response 2025
-              </h1>
+              <h1 className='banner-title'>Punjab Flood Response 2025</h1>
               <a
                 href='http://m-lp.co/floodvic-33'
                 target='_blank'
