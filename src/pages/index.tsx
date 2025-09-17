@@ -1,12 +1,286 @@
 import Layout from '../components/Layout'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
+// Flood Response Banner Component
+function FloodResponseBanner() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  const floodImages = [
+    '/images/flood/PTI09_04_2025_000356B.jpg',
+    '/images/flood/punjab_floods_ht.jpg',
+    '/images/flood/instagram_flood.jpg',
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === floodImages.length - 1 ? 0 : prevIndex + 1
+      )
+    }, 5000) // Change image every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [floodImages.length])
+
+  return (
+    <section className='flood-response-banner'>
+      <div className='banner-container'>
+        <div className='image-slider'>
+          {floodImages.map((image, index) => (
+            <div
+              key={index}
+              className={`slide ${index === currentImageIndex ? 'active' : ''}`}
+              style={{
+                backgroundImage: `url(${image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+          ))}
+        </div>
+        <div className='overlay'></div>
+        <div className='banner-content'>
+          <div className='container'>
+            <div className='content-wrapper'>
+              <h1 className='banner-title'>
+                Jammu & Kashmir and Punjab Flood Response 2025
+              </h1>
+              <a
+                href='http://m-lp.co/floodvic-33'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='donate-btn'
+              >
+                DONATE NOW
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .flood-response-banner {
+          position: relative;
+          height: 100vh;
+          min-height: 600px;
+          overflow: hidden;
+        }
+
+        .banner-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+
+        .image-slider {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .slide {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          transition: opacity 1s ease-in-out;
+          background-size: cover !important;
+          background-position: center !important;
+          background-repeat: no-repeat !important;
+        }
+
+        .slide.active {
+          opacity: 1;
+        }
+
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0.7) 100%
+          );
+          z-index: 1;
+        }
+
+        .banner-content {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-start;
+          z-index: 2;
+          padding: 40px;
+          padding-bottom: 20vh;
+        }
+
+        .content-wrapper {
+          text-align: left;
+          color: white;
+          max-width: 600px;
+          padding: 0;
+        }
+
+        .banner-title {
+          font-size: 3.5rem;
+          font-weight: 700;
+          line-height: 1.2;
+          margin-bottom: 2rem;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+          animation: fadeInUp 1s ease-out;
+        }
+
+        .donate-btn {
+          display: inline-block;
+          background: linear-gradient(135deg, #ff6b35, #f7931e);
+          color: white;
+          padding: 18px 40px;
+          font-size: 1.4rem;
+          font-weight: 700;
+          text-decoration: none;
+          border-radius: 50px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+          transition: all 0.3s ease;
+          animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .donate-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
+          background: linear-gradient(135deg, #f7931e, #ff6b35);
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+          .flood-response-banner {
+            height: 80vh;
+            min-height: 500px;
+          }
+
+          .banner-content {
+            padding: 20px;
+            padding-bottom: 15vh;
+          }
+
+          .banner-title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+          }
+
+          .donate-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+          }
+
+          .content-wrapper {
+            max-width: 100%;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .banner-content {
+            padding: 15px;
+            padding-bottom: 10vh;
+          }
+
+          .banner-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+          }
+
+          .donate-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+          }
+        }
+
+        /* Tablet Responsive */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .banner-content {
+            padding: 30px;
+            padding-bottom: 18vh;
+          }
+
+          .banner-title {
+            font-size: 3rem;
+          }
+
+          .donate-btn {
+            padding: 16px 35px;
+            font-size: 1.3rem;
+          }
+        }
+
+        /* Large Desktop */
+        @media (min-width: 1200px) {
+          .banner-content {
+            padding: 50px;
+            padding-bottom: 20vh;
+          }
+
+          .banner-title {
+            font-size: 4rem;
+          }
+
+          .donate-btn {
+            padding: 20px 45px;
+            font-size: 1.5rem;
+          }
+        }
+      `}</style>
+    </section>
+  )
+}
 export default function Home() {
   return (
     <Layout
       title='Joti Foundation | Home'
       description='Joti Foundation - Fighting for the abolition of poverty, gender inequality and a more sustainable future. Join us in making a difference.'
     >
+      {/* Flood Response Banner */}
+      <FloodResponseBanner />
+
+      {/* Banner Section */}
+      <section className='banner-section'>
+        <div className='slide-item videi-slider'>
+          <div className='image-layer123 lazy-image123'>
+            <div className='overlay'></div>
+            <video playsInline autoPlay muted loop>
+              <source
+                src='/images/thumbnail/Empower-documeantary-for-website.mp4'
+                type='video/mp4'
+              />
+            </video>
+          </div>
+        </div>
+      </section>
       {/* Banner Section */}
       <section className='banner-section'>
         <div className='slide-item videi-slider'>
