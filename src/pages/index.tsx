@@ -7,9 +7,10 @@ function FloodResponseBanner() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const floodImages = [
-    '/images/flood/PTI09_04_2025_000356B.jpg',
-    '/images/flood/punjab_floods_ht.jpg',
-    '/images/flood/instagram_flood.jpg',
+    '/images/flood/IMG_0080.jpg',
+    '/images/flood/IMG_9670.jpg',
+    '/images/flood/IMG_9798.jpg',
+    '/images/flood/IMG_9899.jpg',
   ]
 
   useEffect(() => {
@@ -45,7 +46,7 @@ function FloodResponseBanner() {
             <div className='content-wrapper'>
               <h1 className='banner-title'>Punjab Flood Response 2025</h1>
               <a
-                href='http://m-lp.co/floodvic-33'
+                href='https://pages.razorpay.com/pl_Nw26gwxdMsIh53/view'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='donate-btn'
